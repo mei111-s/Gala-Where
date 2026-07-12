@@ -9,29 +9,20 @@
 }
 
 body {
-  background-color: #2b1b3d;
-  background-image: radial-gradient(
-      circle at 15% 10%,
-      rgba(255, 193, 69, 0.16) 0%,
-      transparent 40%
-    ),
-    radial-gradient(circle at 85% 85%, rgba(255, 111, 145, 0.14) 0%, transparent 45%);
+  background-color: #FFF0F5;
   min-height: 100vh;
 }
 
-/* Jeepney destination-signboard style chip, used for tag/category filters */
-.signboard-chip {
-  border: 2px solid rgba(255, 249, 242, 0.18);
-  transition: transform 0.12s ease, box-shadow 0.12s ease;
+.pill-chip {
+  transition: transform 0.12s ease, box-shadow 0.12s ease, background-color 0.12s ease;
 }
-.signboard-chip:hover {
-  transform: translateY(-2px);
+.pill-chip:hover {
+  transform: translateY(-1px);
 }
-.signboard-chip[data-active="true"] {
-  background-color: #ffc145;
-  color: #1f1330;
-  border-color: #ffc145;
-  box-shadow: 0 4px 0 rgba(31, 19, 48, 0.35);
+.pill-chip[data-active="true"] {
+  background-color: #E91E63;
+  color: #FFF8F3;
+  box-shadow: 0 4px 14px rgba(233, 30, 99, 0.3);
 }
 
 .card-hover {
@@ -39,10 +30,10 @@ body {
 }
 .card-hover:hover {
   transform: translateY(-4px);
-  box-shadow: 0 12px 28px rgba(0, 0, 0, 0.25);
+  box-shadow: 0 14px 30px rgba(175, 139, 135, 0.22);
 }
 
 ::selection {
-  background: #ff6f91;
-  color: #fff9f2;
+  background: #E91E63;
+  color: #FFF8F3;
 }

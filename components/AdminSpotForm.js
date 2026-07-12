@@ -50,17 +50,21 @@ export default function AdminSpotForm({ initial, onSubmit, onCancel, submitLabel
     setSaving(false);
   }
 
+  const inputClass =
+    "w-full rounded-signboard bg-blush border border-maroon/10 px-3 py-2 text-ink focus:outline-none focus:ring-2 focus:ring-cherry/40";
+  const labelClass = "block font-mono text-xs text-inkmuted mb-1";
+
   return (
     <form
       onSubmit={handleSubmit}
-      className="grid sm:grid-cols-2 gap-4 bg-ube-light border border-white/10 rounded-signboard p-5"
+      className="grid sm:grid-cols-2 gap-4 bg-cream border border-maroon/10 rounded-signboard p-5 shadow-card"
     >
       <div>
-        <label className="block font-mono text-xs text-cream/50 mb-1">Area</label>
+        <label className={labelClass}>Area</label>
         <select
           value={form.area}
           onChange={(e) => update("area", e.target.value)}
-          className="w-full rounded bg-black/20 border border-white/10 px-3 py-2 text-cream"
+          className={inputClass}
         >
           {AREAS.map((a) => (
             <option key={a.slug} value={a.slug}>
@@ -71,11 +75,11 @@ export default function AdminSpotForm({ initial, onSubmit, onCancel, submitLabel
       </div>
 
       <div>
-        <label className="block font-mono text-xs text-cream/50 mb-1">Category</label>
+        <label className={labelClass}>Category</label>
         <select
           value={form.category}
           onChange={(e) => update("category", e.target.value)}
-          className="w-full rounded bg-black/20 border border-white/10 px-3 py-2 text-cream"
+          className={inputClass}
         >
           {CATEGORIES.map((c) => (
             <option key={c.slug} value={c.slug}>
@@ -86,98 +90,84 @@ export default function AdminSpotForm({ initial, onSubmit, onCancel, submitLabel
       </div>
 
       <div className="sm:col-span-2">
-        <label className="block font-mono text-xs text-cream/50 mb-1">Name</label>
+        <label className={labelClass}>Name</label>
         <input
           required
           value={form.name}
           onChange={(e) => update("name", e.target.value)}
-          className="w-full rounded bg-black/20 border border-white/10 px-3 py-2 text-cream"
+          className={inputClass}
           placeholder="e.g. Neko Cafe"
         />
       </div>
 
       <div className="sm:col-span-2">
-        <label className="block font-mono text-xs text-cream/50 mb-1">
-          Short description
-        </label>
+        <label className={labelClass}>Short description</label>
         <textarea
           value={form.description}
           onChange={(e) => update("description", e.target.value)}
           rows={2}
-          className="w-full rounded bg-black/20 border border-white/10 px-3 py-2 text-cream"
+          className={inputClass}
           placeholder="What makes it worth going?"
         />
       </div>
 
       <div className="sm:col-span-2">
-        <label className="block font-mono text-xs text-cream/50 mb-1">
-          Image URL
-        </label>
+        <label className={labelClass}>Image URL</label>
         <input
           value={form.image}
           onChange={(e) => update("image", e.target.value)}
-          className="w-full rounded bg-black/20 border border-white/10 px-3 py-2 text-cream"
+          className={inputClass}
           placeholder="https://..."
         />
       </div>
 
       <div>
-        <label className="block font-mono text-xs text-cream/50 mb-1">
-          Google Maps link
-        </label>
+        <label className={labelClass}>Google Maps link</label>
         <input
           value={form.mapsLink}
           onChange={(e) => update("mapsLink", e.target.value)}
-          className="w-full rounded bg-black/20 border border-white/10 px-3 py-2 text-cream"
+          className={inputClass}
           placeholder="https://maps.google.com/..."
         />
       </div>
 
       <div>
-        <label className="block font-mono text-xs text-cream/50 mb-1">
-          Menu link (optional)
-        </label>
+        <label className={labelClass}>Menu link (optional)</label>
         <input
           value={form.menuLink}
           onChange={(e) => update("menuLink", e.target.value)}
-          className="w-full rounded bg-black/20 border border-white/10 px-3 py-2 text-cream"
+          className={inputClass}
           placeholder="https://..."
         />
       </div>
 
       <div className="sm:col-span-2">
-        <label className="block font-mono text-xs text-cream/50 mb-1">
-          How to get there by commute
-        </label>
+        <label className={labelClass}>How to get there by commute</label>
         <textarea
           value={form.commute}
           onChange={(e) => update("commute", e.target.value)}
           rows={2}
-          className="w-full rounded bg-black/20 border border-white/10 px-3 py-2 text-cream"
+          className={inputClass}
           placeholder="e.g. Ride any Ayala-bound jeep, get off at..."
         />
       </div>
 
       <div>
-        <label className="block font-mono text-xs text-cream/50 mb-1">
-          Price range (optional)
-        </label>
+        <label className={labelClass}>Price range (optional)</label>
         <input
           value={form.priceRange}
           onChange={(e) => update("priceRange", e.target.value)}
-          className="w-full rounded bg-black/20 border border-white/10 px-3 py-2 text-cream"
+          className={inputClass}
           placeholder="₱ / ₱₱ / ₱₱₱"
         />
       </div>
 
       <div>
-        <label className="block font-mono text-xs text-cream/50 mb-1">
-          Tags (comma separated)
-        </label>
+        <label className={labelClass}>Tags (comma separated)</label>
         <input
           value={form.tags}
           onChange={(e) => update("tags", e.target.value)}
-          className="w-full rounded bg-black/20 border border-white/10 px-3 py-2 text-cream"
+          className={inputClass}
           placeholder="budget, japanese, cat cafe"
         />
       </div>
@@ -186,7 +176,7 @@ export default function AdminSpotForm({ initial, onSubmit, onCancel, submitLabel
         <button
           type="submit"
           disabled={saving}
-          className="px-4 py-2 rounded-signboard bg-mango text-ink font-display font-bold hover:brightness-105 transition disabled:opacity-50"
+          className="px-5 py-2.5 rounded-pill bg-cherry text-ivory font-display font-bold shadow-pop hover:brightness-105 transition disabled:opacity-50"
         >
           {saving ? "Saving..." : submitLabel}
         </button>
@@ -194,7 +184,7 @@ export default function AdminSpotForm({ initial, onSubmit, onCancel, submitLabel
           <button
             type="button"
             onClick={onCancel}
-            className="px-4 py-2 rounded-signboard bg-white/10 text-cream font-semibold hover:bg-white/20 transition"
+            className="px-5 py-2.5 rounded-pill bg-blushdeep text-maroon font-semibold hover:brightness-95 transition"
           >
             Cancel
           </button>

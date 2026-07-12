@@ -12,13 +12,13 @@ export default async function AreaPage({ params }) {
 
   return (
     <div>
-      <Link href="/" className="font-mono text-xs text-cream/40 hover:text-mango">
+      <Link href="/" className="font-mono text-xs text-ink/40 hover:text-cherry">
         ← all areas
       </Link>
-      <h1 className="font-display text-4xl font-extrabold text-cream mt-2 mb-1">
+      <h1 className="font-display text-4xl font-extrabold text-maroon mt-2 mb-1">
         {area.name}
       </h1>
-      <p className="text-cream/60 mb-6">{area.blurb}</p>
+      <p className="text-inkmuted mb-6">{area.blurb}</p>
 
       <AreaExplorer spots={spots} />
     </div>

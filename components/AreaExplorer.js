@@ -33,9 +33,9 @@ export default function AreaExplorer({ spots }) {
 
   if (spots.length === 0) {
     return (
-      <p className="text-cream/50 mt-6">
+      <p className="text-inkmuted mt-6">
         No spots here yet — add some from{" "}
-        <a href="/admin" className="text-mango underline">
+        <a href="/admin" className="text-cherry underline">
           /admin
         </a>
         .
@@ -55,7 +55,7 @@ export default function AreaExplorer({ spots }) {
               setActiveCategory(cat.slug);
               setActiveTag(null);
             }}
-            className="signboard-chip rounded-signboard px-4 py-2 font-display font-semibold text-sm bg-ube-light text-cream"
+            className="pill-chip rounded-pill px-4 py-2 font-display font-semibold text-sm bg-cream border border-maroon/10 text-maroon"
           >
             {cat.icon} {cat.name}
           </button>
@@ -68,7 +68,7 @@ export default function AreaExplorer({ spots }) {
           <button
             data-active={activeTag === null}
             onClick={() => setActiveTag(null)}
-            className="signboard-chip rounded px-2.5 py-1 font-mono text-[11px] uppercase text-cream/70 bg-white/5"
+            className="pill-chip rounded-pill px-3 py-1 font-mono text-[11px] uppercase text-inkmuted bg-blushdeep"
           >
             all
           </button>
@@ -77,7 +77,7 @@ export default function AreaExplorer({ spots }) {
               key={tag}
               data-active={activeTag === tag}
               onClick={() => setActiveTag(tag)}
-              className="signboard-chip rounded px-2.5 py-1 font-mono text-[11px] uppercase text-cream/70 bg-white/5"
+              className="pill-chip rounded-pill px-3 py-1 font-mono text-[11px] uppercase text-inkmuted bg-blushdeep"
             >
               {tag}
             </button>
@@ -87,7 +87,7 @@ export default function AreaExplorer({ spots }) {
 
       {/* Spot grid */}
       {visibleSpots.length === 0 ? (
-        <p className="text-cream/50">No spots match that filter yet.</p>
+        <p className="text-inkmuted">No spots match that filter yet.</p>
       ) : (
         <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-4">
           {visibleSpots.map((spot) => (

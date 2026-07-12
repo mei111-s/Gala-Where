@@ -1,6 +1,8 @@
 import { Baloo_2, Plus_Jakarta_Sans, JetBrains_Mono } from "next/font/google";
 import "./globals.css";
 import Link from "next/link";
+import { AREAS } from "@/lib/data";
+import SearchBar from "@/components/SearchBar";
 
 const baloo = Baloo_2({
   subsets: ["latin"],
@@ -28,23 +30,45 @@ export const metadata = {
 export default function RootLayout({ children }) {
   return (
     <html lang="en" className={`${baloo.variable} ${jakarta.variable} ${mono.variable}`}>
-      <body className="font-body text-cream">
-        <header className="border-b border-white/10">
-          <div className="max-w-5xl mx-auto px-5 py-4 flex items-center justify-between">
-            <Link href="/" className="font-display text-2xl font-bold text-cream tracking-tight">
-              Liyag <span className="text-mango">♡</span>
+      <body className="font-body text-ink">
+        <header className="bg-sandlight border-b border-mauve/20 sticky top-0 z-30">
+          <div className="max-w-5xl mx-auto px-5 py-4 flex items-center justify-between gap-4 flex-wrap">
+            <Link href="/" className="font-display text-2xl font-extrabold text-maroon tracking-tight shrink-0">
+              Liyag
             </Link>
+            <div className="flex-1 flex justify-center min-w-[180px]">
+              <SearchBar />
+            </div>
             <Link
               href="/admin"
-              className="font-mono text-xs uppercase tracking-wider text-cream/50 hover:text-mango transition-colors"
+              className="pill-chip rounded-pill px-4 py-2 bg-cherry text-ivory font-display font-bold text-sm shadow-pop shrink-0"
             >
-              admin
+              Admin
             </Link>
           </div>
+
+          {/* Area quick-nav strip */}
+          <nav className="bg-maroon">
+            <div className="max-w-5xl mx-auto px-5 py-2.5 flex items-center gap-5 overflow-x-auto">
+              {AREAS.map((area) => (
+                <Link
+                  key={area.slug}
+                  href={`/${area.slug}`}
+                  className="text-ivory/85 hover:text-ivory font-display font-semibold text-sm whitespace-nowrap transition-colors"
+                >
+                  {area.name}
+                </Link>
+              ))}
+            </div>
+          </nav>
         </header>
+
         <main className="max-w-5xl mx-auto px-5 py-8">{children}</main>
-        <footer className="max-w-5xl mx-auto px-5 py-10 text-center text-cream/30 text-sm font-mono">
-          made with ♡ for the barkada
+
+        <footer className="mt-10">
+          <div className="bg-maroon text-ivory text-center py-4 font-display font-bold">
+            Liyag — our little map of Manila, made with love
+          </div>
         </footer>
       </body>
     </html>

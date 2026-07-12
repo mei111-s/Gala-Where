@@ -6,7 +6,7 @@ export default function SpotCard({ spot }) {
   const [showCommute, setShowCommute] = useState(false);
 
   return (
-    <div className="card-hover rounded-signboard overflow-hidden bg-ube-light border border-white/10 shadow-card flex flex-col">
+    <div className="card-hover rounded-signboard overflow-hidden bg-cream border border-maroon/10 shadow-card flex flex-col">
       {spot.image ? (
         // eslint-disable-next-line @next/next/no-img-element
         <img
@@ -16,7 +16,7 @@ export default function SpotCard({ spot }) {
           loading="lazy"
         />
       ) : (
-        <div className="w-full h-44 bg-ube flex items-center justify-center text-cream/30 font-mono text-xs">
+        <div className="w-full h-44 bg-blush flex items-center justify-center text-ink/30 font-mono text-xs">
           no photo yet
         </div>
       )}
@@ -24,17 +24,17 @@ export default function SpotCard({ spot }) {
       <div className="p-4 flex flex-col gap-3 flex-1">
         <div>
           <div className="flex items-start justify-between gap-2">
-            <h3 className="font-display font-bold text-lg text-cream leading-tight">
+            <h3 className="font-display font-bold text-lg text-maroon leading-tight">
               {spot.name}
             </h3>
             {spot.priceRange && (
-              <span className="font-mono text-xs text-mango whitespace-nowrap mt-1">
+              <span className="font-mono text-xs text-cherry font-bold whitespace-nowrap mt-1">
                 {spot.priceRange}
               </span>
             )}
           </div>
           {spot.description && (
-            <p className="text-cream/60 text-sm mt-1">{spot.description}</p>
+            <p className="text-inkmuted text-sm mt-1">{spot.description}</p>
           )}
         </div>
 
@@ -43,7 +43,7 @@ export default function SpotCard({ spot }) {
             {spot.tags.map((tag) => (
               <span
                 key={tag}
-                className="font-mono text-[10px] uppercase tracking-wide px-2 py-1 rounded bg-white/5 text-cream/50"
+                className="font-mono text-[10px] uppercase tracking-wide px-2 py-1 rounded-pill bg-blushdeep text-inkmuted"
               >
                 {tag}
               </span>
@@ -57,7 +57,7 @@ export default function SpotCard({ spot }) {
               href={spot.mapsLink}
               target="_blank"
               rel="noopener noreferrer"
-              className="px-3 py-1.5 rounded-signboard bg-guava text-ink font-semibold hover:brightness-105 transition"
+              className="px-3 py-1.5 rounded-pill bg-cherry text-ivory font-semibold hover:brightness-105 transition shadow-pop"
             >
               Maps
             </a>
@@ -65,7 +65,7 @@ export default function SpotCard({ spot }) {
           {spot.commute && (
             <button
               onClick={() => setShowCommute((v) => !v)}
-              className="px-3 py-1.5 rounded-signboard bg-white/10 text-cream font-semibold hover:bg-white/20 transition"
+              className="px-3 py-1.5 rounded-pill bg-blushdeep text-maroon font-semibold hover:brightness-95 transition"
             >
               Commute
             </button>
@@ -75,7 +75,7 @@ export default function SpotCard({ spot }) {
               href={spot.menuLink}
               target="_blank"
               rel="noopener noreferrer"
-              className="px-3 py-1.5 rounded-signboard bg-white/10 text-cream font-semibold hover:bg-white/20 transition"
+              className="px-3 py-1.5 rounded-pill bg-blushdeep text-maroon font-semibold hover:brightness-95 transition"
             >
               Menu
             </a>
@@ -83,7 +83,7 @@ export default function SpotCard({ spot }) {
         </div>
 
         {showCommute && spot.commute && (
-          <p className="text-cream/60 text-xs bg-black/20 rounded-signboard p-3 leading-relaxed">
+          <p className="text-inkmuted text-xs bg-blush rounded-signboard p-3 leading-relaxed">
             {spot.commute}
           </p>
         )}

@@ -1,7 +1,7 @@
 "use client";
 
 import { useEffect, useState } from "react";
-import { AREAS, CATEGORIES, areaBySlug, categoryBySlug } from "@/lib/data";
+import { AREAS, areaBySlug, categoryBySlug } from "@/lib/data";
 import AdminSpotForm from "@/components/AdminSpotForm";
 
 export default function AdminPage() {
@@ -85,26 +85,26 @@ export default function AdminPage() {
   }
 
   if (authed === null) {
-    return <p className="text-cream/50">Loading...</p>;
+    return <p className="text-inkmuted">Loading...</p>;
   }
 
   if (!authed) {
     return (
-      <div className="max-w-sm mx-auto mt-10">
-        <h1 className="font-display text-3xl font-bold text-cream mb-4">Admin login</h1>
+      <div className="max-w-sm mx-auto mt-10 bg-cream border border-maroon/10 rounded-signboard p-6 shadow-card">
+        <h1 className="font-display text-3xl font-bold text-maroon mb-4">Admin login</h1>
         <form onSubmit={handleLogin} className="flex flex-col gap-3">
           <input
             type="password"
             value={password}
             onChange={(e) => setPassword(e.target.value)}
             placeholder="Password"
-            className="w-full rounded bg-black/20 border border-white/10 px-3 py-2 text-cream"
+            className="w-full rounded-signboard bg-blush border border-maroon/10 px-3 py-2 text-ink focus:outline-none focus:ring-2 focus:ring-cherry/40"
             autoFocus
           />
-          {loginError && <p className="text-guava text-sm">{loginError}</p>}
+          {loginError && <p className="text-cherry text-sm">{loginError}</p>}
           <button
             type="submit"
-            className="px-4 py-2 rounded-signboard bg-mango text-ink font-display font-bold hover:brightness-105 transition"
+            className="px-4 py-2.5 rounded-pill bg-cherry text-ivory font-display font-bold shadow-pop hover:brightness-105 transition"
           >
             Log in
           </button>
@@ -119,10 +119,10 @@ export default function AdminPage() {
   return (
     <div>
       <div className="flex items-center justify-between mb-6">
-        <h1 className="font-display text-3xl font-bold text-cream">Manage spots</h1>
+        <h1 className="font-display text-3xl font-bold text-maroon">Manage spots</h1>
         <button
           onClick={handleLogout}
-          className="font-mono text-xs text-cream/40 hover:text-mango"
+          className="font-mono text-xs text-ink/40 hover:text-cherry"
         >
           log out
         </button>
@@ -131,7 +131,7 @@ export default function AdminPage() {
       {!showForm && !editingSpot && (
         <button
           onClick={() => setShowForm(true)}
-          className="mb-6 px-4 py-2 rounded-signboard bg-guava text-ink font-display font-bold hover:brightness-105 transition"
+          className="mb-6 px-5 py-2.5 rounded-pill bg-cherry text-ivory font-display font-bold shadow-pop hover:brightness-105 transition"
         >
           + Add a spot
         </button>
@@ -162,7 +162,7 @@ export default function AdminPage() {
         <button
           data-active={filterArea === "all"}
           onClick={() => setFilterArea("all")}
-          className="signboard-chip rounded px-3 py-1.5 font-mono text-xs text-cream/70 bg-white/5"
+          className="pill-chip rounded-pill px-3 py-1.5 font-mono text-xs text-inkmuted bg-blushdeep"
         >
           all areas
         </button>
@@ -171,7 +171,7 @@ export default function AdminPage() {
             key={a.slug}
             data-active={filterArea === a.slug}
             onClick={() => setFilterArea(a.slug)}
-            className="signboard-chip rounded px-3 py-1.5 font-mono text-xs text-cream/70 bg-white/5"
+            className="pill-chip rounded-pill px-3 py-1.5 font-mono text-xs text-inkmuted bg-blushdeep"
           >
             {a.name}
           </button>
@@ -179,21 +179,21 @@ export default function AdminPage() {
       </div>
 
       {loading ? (
-        <p className="text-cream/50">Loading spots...</p>
+        <p className="text-inkmuted">Loading spots...</p>
       ) : visibleSpots.length === 0 ? (
-        <p className="text-cream/50">No spots yet.</p>
+        <p className="text-inkmuted">No spots yet.</p>
       ) : (
         <div className="flex flex-col gap-2">
           {visibleSpots.map((spot) => (
             <div
               key={spot.id}
-              className="flex items-center justify-between gap-3 bg-ube-light border border-white/10 rounded-signboard px-4 py-3"
+              className="flex items-center justify-between gap-3 bg-cream border border-maroon/10 rounded-signboard px-4 py-3 shadow-card"
             >
               <div className="min-w-0">
-                <p className="font-display font-bold text-cream truncate">
+                <p className="font-display font-bold text-maroon truncate">
                   {spot.name}
                 </p>
-                <p className="font-mono text-xs text-cream/40">
+                <p className="font-mono text-xs text-ink/40">
                   {areaBySlug(spot.area)?.name} · {categoryBySlug(spot.category)?.name}
                 </p>
               </div>
@@ -203,13 +203,13 @@ export default function AdminPage() {
                     setEditingSpot(spot);
                     setShowForm(false);
                   }}
-                  className="px-3 py-1.5 rounded-signboard bg-white/10 text-cream text-sm font-semibold hover:bg-white/20 transition"
+                  className="px-3 py-1.5 rounded-pill bg-blushdeep text-maroon text-sm font-semibold hover:brightness-95 transition"
                 >
                   Edit
                 </button>
                 <button
                   onClick={() => handleDelete(spot.id)}
-                  className="px-3 py-1.5 rounded-signboard bg-guava/20 text-guava text-sm font-semibold hover:bg-guava/30 transition"
+                  className="px-3 py-1.5 rounded-pill bg-cherry/10 text-cherry text-sm font-semibold hover:bg-cherry/20 transition"
                 >
                   Delete
                 </button>
