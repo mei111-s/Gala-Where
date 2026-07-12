@@ -8,6 +8,7 @@ const EMPTY = {
   category: CATEGORIES[0]?.slug || "",
   name: "",
   description: "",
+  address: "",
   image: "",
   mapsLink: "",
   commute: "",
@@ -52,7 +53,7 @@ export default function AdminSpotForm({ initial, onSubmit, onCancel, submitLabel
 
   const inputClass =
     "w-full rounded-signboard bg-blush border border-maroon/10 px-3 py-2 text-ink focus:outline-none focus:ring-2 focus:ring-cherry/40";
-  const labelClass = "block font-mono text-xs text-inkmuted mb-1";
+  const labelClass = "block font-mono text-xs text-ink/50 mb-1";
 
   return (
     <form
@@ -108,6 +109,16 @@ export default function AdminSpotForm({ initial, onSubmit, onCancel, submitLabel
           rows={2}
           className={inputClass}
           placeholder="What makes it worth going?"
+        />
+      </div>
+
+      <div className="sm:col-span-2">
+        <label className={labelClass}>Address / neighborhood (optional)</label>
+        <input
+          value={form.address}
+          onChange={(e) => update("address", e.target.value)}
+          className={inputClass}
+          placeholder="e.g. Legazpi Village, Makati"
         />
       </div>
 

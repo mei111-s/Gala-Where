@@ -1,38 +1,47 @@
 "use client";
 
 import { useState } from "react";
+import Link from "next/link";
 
 export default function SpotCard({ spot }) {
   const [showCommute, setShowCommute] = useState(false);
+  const detailHref = `/${spot.area}/${spot.id}`;
 
   return (
     <div className="card-hover rounded-signboard overflow-hidden bg-cream border border-maroon/10 shadow-card flex flex-col">
-      {spot.image ? (
-        // eslint-disable-next-line @next/next/no-img-element
-        <img
-          src={spot.image}
-          alt={spot.name}
-          className="w-full h-44 object-cover"
-          loading="lazy"
-        />
-      ) : (
-        <div className="w-full h-44 bg-blush flex items-center justify-center text-ink/30 font-mono text-xs">
-          no photo yet
-        </div>
-      )}
+      <Link href={detailHref}>
+        {spot.image ? (
+          // eslint-disable-next-line @next/next/no-img-element
+          <img
+            src={spot.image}
+            alt={spot.name}
+            className="w-full h-44 object-cover"
+            loading="lazy"
+          />
+        ) : (
+          <div className="w-full h-44 bg-blush flex items-center justify-center text-inkmuted font-mono text-xs">
+            no photo yet
+          </div>
+        )}
+      </Link>
 
       <div className="p-4 flex flex-col gap-3 flex-1">
         <div>
           <div className="flex items-start justify-between gap-2">
-            <h3 className="font-display font-bold text-lg text-maroon leading-tight">
-              {spot.name}
-            </h3>
+            <Link href={detailHref} className="min-w-0">
+              <h3 className="font-display font-bold text-lg text-maroon leading-tight hover:text-cherry transition-colors">
+                {spot.name}
+              </h3>
+            </Link>
             {spot.priceRange && (
               <span className="font-mono text-xs text-cherry font-bold whitespace-nowrap mt-1">
                 {spot.priceRange}
               </span>
             )}
           </div>
+          {spot.address && (
+            <p className="text-inkmuted text-xs mt-0.5">{spot.address}</p>
+          )}
           {spot.description && (
             <p className="text-inkmuted text-sm mt-1">{spot.description}</p>
           )}

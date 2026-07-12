@@ -18,16 +18,16 @@ export default async function HomePage() {
   return (
     <div>
       {/* Hero banner */}
-      <section className="relative overflow-hidden rounded-signboard bg-maroon text-ivory px-6 py-10 sm:px-10 sm:py-14 mb-8">
+      <section className="relative overflow-hidden rounded-signboard bg-maroon text-ivory px-6 py-12 sm:px-10 sm:py-16 mb-10">
         <div className="absolute -top-6 -right-6 w-28 h-28 rounded-full bg-cherry/40 hidden sm:block" />
-        <div className="absolute bottom-4 right-16 w-16 h-16 rounded-full bg-gold/30 hidden sm:block" />
+        <div className="absolute bottom-4 right-16 w-16 h-16 rounded-full bg-gold/40 hidden sm:block" />
         <p className="font-mono text-xs uppercase tracking-widest text-gold mb-3">
           our spots, mapped by area
         </p>
-        <h1 className="font-display text-4xl sm:text-5xl font-extrabold leading-tight mb-3 max-w-lg">
+        <h1 className="font-display text-5xl sm:text-6xl font-extrabold leading-[1.05] mb-4 max-w-lg">
           Cute spots around Manila, picked by us.
         </h1>
-        <p className="text-ivory/75 max-w-md mb-6">
+        <p className="text-ivory max-w-md mb-7 text-base sm:text-lg">
           Pick a city to browse — food, cafes, activities, and more. Every
           spot comes with a map link, how to commute there, and the menu.
         </p>
@@ -51,20 +51,28 @@ export default async function HomePage() {
               <Link
                 key={area.slug}
                 href={`/${area.slug}`}
-                className="card-hover group block rounded-signboard bg-cream border border-maroon/10 p-6 shadow-card"
+                className="card-hover group relative block rounded-signboard overflow-hidden border border-mauve/20 shadow-card"
+                style={{
+                  backgroundImage:
+                    "linear-gradient(135deg, rgba(175,139,135,0.95), rgba(233,30,99,0.85))",
+                }}
               >
-                <div className="flex items-start justify-between">
-                  <div className="flex items-center gap-3">
-                    <span className="text-3xl">{AREA_ICONS[area.slug] || "📍"}</span>
-                    <h3 className="font-display text-2xl font-bold text-maroon group-hover:text-cherry transition-colors">
-                      {area.name}
-                    </h3>
+                <div className="p-6 relative z-10">
+                  <div className="flex items-start justify-between">
+                    <div className="flex items-center gap-3">
+                      <span className="text-3xl drop-shadow-sm">
+                        {AREA_ICONS[area.slug] || "📍"}
+                      </span>
+                      <h3 className="font-display text-2xl font-bold text-ivory">
+                        {area.name}
+                      </h3>
+                    </div>
+                    <span className="font-mono text-xs text-ivory/80 mt-1 whitespace-nowrap">
+                      {count} spot{count === 1 ? "" : "s"}
+                    </span>
                   </div>
-                  <span className="font-mono text-xs text-ink/40 mt-1 whitespace-nowrap">
-                    {count} spot{count === 1 ? "" : "s"}
-                  </span>
+                  <p className="text-ivory/85 text-sm mt-2">{area.blurb}</p>
                 </div>
-                <p className="text-inkmuted text-sm mt-2">{area.blurb}</p>
               </Link>
             );
           })}

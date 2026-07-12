@@ -39,12 +39,26 @@ export default function RootLayout({ children }) {
             <div className="flex-1 flex justify-center min-w-[180px]">
               <SearchBar />
             </div>
-            <Link
-              href="/admin"
-              className="pill-chip rounded-pill px-4 py-2 bg-cherry text-ivory font-display font-bold text-sm shadow-pop shrink-0"
-            >
-              Admin
-            </Link>
+            <div className="flex items-center gap-4 shrink-0">
+              <Link
+                href="/about"
+                className="hidden sm:inline font-mono text-xs text-inkmuted hover:text-cherry transition-colors"
+              >
+                about
+              </Link>
+              <Link
+                href="/submit"
+                className="hidden sm:inline font-mono text-xs text-inkmuted hover:text-cherry transition-colors"
+              >
+                suggest a spot
+              </Link>
+              <Link
+                href="/admin"
+                className="pill-chip rounded-pill px-4 py-2 bg-cherry text-ivory font-display font-bold text-sm shadow-pop"
+              >
+                Admin
+              </Link>
+            </div>
           </div>
 
           {/* Area quick-nav strip */}
