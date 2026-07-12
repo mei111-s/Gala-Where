@@ -1,20 +1,8 @@
-import { Baloo_2, Plus_Jakarta_Sans, JetBrains_Mono } from "next/font/google";
+import { JetBrains_Mono } from "next/font/google";
 import "./globals.css";
 import Link from "next/link";
-import { AREAS } from "@/lib/data";
+import { CATEGORIES } from "@/lib/data";
 import SearchBar from "@/components/SearchBar";
-
-const baloo = Baloo_2({
-  subsets: ["latin"],
-  weight: ["500", "600", "700", "800"],
-  variable: "--font-baloo",
-});
-
-const jakarta = Plus_Jakarta_Sans({
-  subsets: ["latin"],
-  weight: ["400", "500", "600", "700"],
-  variable: "--font-jakarta",
-});
 
 const mono = JetBrains_Mono({
   subsets: ["latin"],
@@ -29,7 +17,7 @@ export const metadata = {
 
 export default function RootLayout({ children }) {
   return (
-    <html lang="en" className={`${baloo.variable} ${jakarta.variable} ${mono.variable}`}>
+    <html lang="en" className={mono.variable}>
       <body className="font-body text-ink">
         <header className="bg-sandlight border-b border-mauve/20 sticky top-0 z-30">
           <div className="max-w-5xl mx-auto px-5 py-4 flex items-center justify-between gap-4 flex-wrap">
@@ -61,16 +49,16 @@ export default function RootLayout({ children }) {
             </div>
           </div>
 
-          {/* Area quick-nav strip */}
+          {/* Category quick-nav strip */}
           <nav className="bg-maroon">
             <div className="max-w-5xl mx-auto px-5 py-2.5 flex items-center gap-5 overflow-x-auto">
-              {AREAS.map((area) => (
+              {CATEGORIES.map((cat) => (
                 <Link
-                  key={area.slug}
-                  href={`/${area.slug}`}
+                  key={cat.slug}
+                  href={`/category/${cat.slug}`}
                   className="text-ivory/85 hover:text-ivory font-display font-semibold text-sm whitespace-nowrap transition-colors"
                 >
-                  {area.name}
+                  {cat.icon} {cat.name}
                 </Link>
               ))}
             </div>

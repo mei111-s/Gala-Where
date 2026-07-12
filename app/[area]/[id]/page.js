@@ -6,7 +6,7 @@ import { getSpotById } from "@/lib/store";
 export default async function SpotDetailPage({ params }) {
   const spot = await getSpotById(params.id);
 
-  if (!spot || spot.area !== params.area || spot.status !== "published") {
+  if (!spot || spot.area !== params.area || (spot.status || "published") !== "published") {
     notFound();
   }
 

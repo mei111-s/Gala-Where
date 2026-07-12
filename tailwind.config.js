@@ -26,8 +26,8 @@ module.exports = {
         inkmuted: "#776B6B",   // secondary/muted text
       },
       fontFamily: {
-        display: ["var(--font-baloo)"],
-        body: ["var(--font-jakarta)"],
+        display: ["Helvetica Neue", "Helvetica", "Arial", "sans-serif"],
+        body: ["Helvetica Neue", "Helvetica", "Arial", "sans-serif"],
         mono: ["var(--font-mono)"],
       },
       borderRadius: {
