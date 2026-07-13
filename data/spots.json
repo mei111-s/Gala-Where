@@ -1412,5 +1412,26 @@
     "menuLink": "",
     "priceRange": "",
     "createdAt": 1710000000098
+  },
+  {
+    "id": "504c5b44-5c37-48ff-8618-6d5022d47999",
+    "createdAt": 1783921990193,
+    "status": "published",
+    "address": "3D Sumulong Hwy, Mambugan, Antipolo, 1870 Rizal",
+    "area": "antipolo",
+    "category": "cafes",
+    "tags": [
+      "city view",
+      "coffee",
+      "pasta"
+    ],
+    "name": "Sumu Cafe",
+    "description": "",
+    "image": "https://i.imgur.com/S5nTKuc.png",
+    "mapsLink": "https://maps.app.goo.gl/A1UqA6ZRBvTAXuxb7",
+    "commute": "",
+    "menuLink": "",
+    "priceRange": "",
+    "priceMin": null
   }
 ]
