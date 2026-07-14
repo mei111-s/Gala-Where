@@ -38,7 +38,7 @@ export async function POST(request) {
     status: "pending",
   });
 
-  notifyDiscord(spot).catch((err) =>
+  await notifyDiscord(spot).catch((err) =>
     console.error("Discord notification failed:", err)
   );
 
@@ -47,12 +47,15 @@ export async function POST(request) {
 
 async function notifyDiscord(spot) {
   const webhookUrl = process.env.DISCORD_WEBHOOK_URL;
-  if (!webhookUrl) return;
+  if (!webhookUrl) {
+    console.log("DISCORD_WEBHOOK_URL not set, skipping notification");
+    return;
+  }
 
   const area = areaBySlug(spot.area)?.name || spot.area;
   const category = categoryBySlug(spot.category)?.name || spot.category;
 
-  await fetch(webhookUrl, {
+  const res = await fetch(webhookUrl, {
     method: "POST",
     headers: { "Content-Type": "application/json" },
     body: JSON.stringify({
@@ -61,4 +64,9 @@ async function notifyDiscord(spot) {
       }\nReview it at your site's \`/admin\` → Pending review.`,
     }),
   });
+
+  if (!res.ok) {
+    const text = await res.text();
+    throw new Error(`Discord webhook returned ${res.status}: ${text}`);
+  }
 }
