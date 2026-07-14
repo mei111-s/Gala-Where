@@ -4,6 +4,8 @@ import { areaBySlug } from "@/lib/data";
 import { getSpotsByArea } from "@/lib/store";
 import AreaExplorer from "@/components/AreaExplorer";
 
+export const dynamic = "force-dynamic";
+
 export default async function AreaPage({ params }) {
   const area = areaBySlug(params.area);
   if (!area) notFound();

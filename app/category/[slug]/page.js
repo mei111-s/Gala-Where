@@ -4,6 +4,8 @@ import { categoryBySlug } from "@/lib/data";
 import { getAllSpots } from "@/lib/store";
 import CategoryExplorer from "@/components/CategoryExplorer";
 
+export const dynamic = "force-dynamic";
+
 export default async function CategoryPage({ params }) {
   const category = categoryBySlug(params.slug);
   if (!category) notFound();
@@ -20,7 +22,7 @@ export default async function CategoryPage({ params }) {
         {category.name}
       </h1>
       <p className="text-inkmuted mb-6">
-        list of {category.name.toLowerCase()} spots we found ! ⋆˚꩜｡.
+        Every {category.name.toLowerCase()} spot we've got, across the city.
       </p>
 
       <CategoryExplorer spots={spots} />

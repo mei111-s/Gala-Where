@@ -2,6 +2,8 @@ import Link from "next/link";
 import { AREAS } from "@/lib/data";
 import { getAllSpots } from "@/lib/store";
 
+export const dynamic = "force-dynamic";
+
 export default async function HomePage() {
   const spots = await getAllSpots();
 
@@ -12,14 +14,14 @@ export default async function HomePage() {
         <div className="absolute -top-6 -right-6 w-28 h-28 rounded-full bg-cherry/40 hidden sm:block" />
         <div className="absolute bottom-4 right-16 w-16 h-16 rounded-full bg-gold/40 hidden sm:block" />
         <p className="font-mono text-xs uppercase tracking-widest text-gold mb-3">
-           *ੈ✩‧₊˚༺☆༻*ੈ✩‧₊˚*ੈ✩‧₊˚༺☆༻*ੈ✩‧₊˚  
+          our spots, mapped by area
         </p>
         <h1 className="font-display text-5xl sm:text-6xl font-extrabold leading-[1.05] mb-4 max-w-lg">
-          Cute spots around Manila, picked by us ^^
+          Cute spots around Manila, picked by us.
         </h1>
         <p className="text-ivory max-w-md mb-7 text-base sm:text-lg">
-          Pick a city to browse: food, cafes, activities, && more. Every
-          spot comes with a map link, how to commute there, and the menu ˙✧˖°📷 ༘ ⋆｡˚
+          Pick a city to browse — food, cafes, activities, and more. Every
+          spot comes with a map link, how to commute there, and the menu.
         </p>
         <Link
           href={`#areas`}
