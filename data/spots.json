@@ -1433,5 +1433,25 @@
     "menuLink": "",
     "priceRange": "",
     "priceMin": null
+  },
+  {
+    "id": "5f0097bf-c64e-40a0-ade0-c338bddfc758",
+    "createdAt": 1783928740033,
+    "status": "published",
+    "address": "The Residences, Bonifacio Civic Tower, McKinley Pkwy, Taguig City",
+    "area": "bgc",
+    "category": "cafes",
+    "tags": [
+      "outdoor",
+      "coffee"
+    ],
+    "name": "Tambaii",
+    "description": "",
+    "image": "",
+    "mapsLink": "https://maps.app.goo.gl/7kDSjXUrMH3Ua2sy7",
+    "commute": "",
+    "menuLink": "",
+    "priceRange": "",
+    "priceMin": null
   }
 ]
